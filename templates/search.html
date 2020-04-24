@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>STAT</title>
+</head>
+<body>
+    <form action = "/search_mail" method = "POST">
+    <input type = "text" name = "pattern">
+    <input type = "submit" name = "submit" value = "search">
+    </form>
+    {% if object is defined %}
+        <table><tr>
+            <td>id</td><td>mail</td><td>bonus mail</td><td>created</td><td>last login</td><td>platform</td></tr>
+        {% for i in object %}
+            <tr><td>{{i.id}}</td><td>{{i.mail}}</td><td>{{i.bonus_mail}}</td><td>{{i.created}}</td><td>{{i.last_login}}</td><td>{{i.sender}}</td><td>
+            <details>
+            <summary>open</summary>
+            {{i.save}}
+            </details>
+            </td></tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
